@@ -18,7 +18,7 @@ Pergunte qualquer coisa, peça uma pesquisa e continue trabalhando: ela avisa fa
 
 ---
 
-## 📖 Sobre
+##  Sobre
 
 A **SEXTA-FEIRA** é uma assistente virtual com identidade própria, feita do zero em português do Brasil. A ideia é reunir em um só lugar o que normalmente exige vários apps:
 
@@ -30,25 +30,25 @@ A **SEXTA-FEIRA** é uma assistente virtual com identidade própria, feita do ze
 
 Depois das funções principais, o projeto ganha uma interface animada (HTML, CSS e JavaScript) e será empacotado como aplicativo para **PC** e **celular**.
 
-> 🚧 **Projeto em desenvolvimento ativo.** Os itens da seção [Funcionalidades](#-funcionalidades) e do [Roadmap](#-roadmap) mostram o que já existe e o que ainda está planejado.
+>  **Projeto em desenvolvimento ativo.** Os itens da seção [Funcionalidades](#-funcionalidades) e do [Roadmap](#-roadmap) mostram o que já existe e o que ainda está planejado.
 
 ---
 
-## ✨ Funcionalidades
+##  Funcionalidades
 
 | | Funcionalidade | O que faz | Status |
 |---|---|---|---|
-| 🧠 | **Conversa e dúvidas** | Responde perguntas gerais, resolve contas e ajuda com código | 🔜 Planejado |
-| 🌐 | **Pesquisa na web** | Busca informações atuais e entrega um resumo | 🔜 Planejado |
-| 🎙️ | **Voz** | Fala as respostas e ouve você, com a palavra de ativação "Sexta-Feira" | 🔜 Planejado |
-| 🖥️ | **Controle do PC** | Repouso, bloqueio de tela, abrir programas, volume | 🔜 Planejado |
-| ⏳ | **Tarefas em segundo plano** | Pesquisa enquanto você trabalha e avisa por voz quando terminar | 🔜 Planejado |
-| 🎨 | **Interface animada** | Visual próprio com animações em CSS e JavaScript | 🔜 Planejado |
-| 📱 | **App para PC e celular** | Versão instalável nos dois dispositivos | 🔜 Planejado |
+| 🧠 | **Conversa e dúvidas** | Responde perguntas gerais, resolve contas e ajuda com código |  Planejado |
+| 🌐 | **Pesquisa na web** | Busca informações atuais e entrega um resumo |  Planejado |
+| 🎙️ | **Voz** | Fala as respostas e ouve você, com a palavra de ativação "Sexta-Feira" |  Planejado |
+| 🖥️ | **Controle do PC** | Repouso, bloqueio de tela, abrir programas, volume |  Planejado |
+| ⏳ | **Tarefas em segundo plano** | Pesquisa enquanto você trabalha e avisa por voz quando terminar |  Planejado |
+| 🎨 | **Interface animada** | Visual próprio com animações em CSS e JavaScript |  Planejado |
+| 📱 | **App para PC e celular** | Versão instalável nos dois dispositivos |  Planejado |
 
 ---
 
-## 🔍 Como funciona
+##  Como funciona
 
 ```mermaid
 flowchart LR
@@ -71,7 +71,7 @@ flowchart LR
 
 ---
 
-## 🧩 Estrutura do projeto
+##  Estrutura do projeto
 
 ```
 SEXTA-FEIRA/
@@ -87,7 +87,7 @@ SEXTA-FEIRA/
 
 ---
 
-## 🛠️ Tecnologias
+##  Tecnologias
 
 | Tecnologia | Função | Status |
 |---|---|---|
@@ -100,7 +100,7 @@ SEXTA-FEIRA/
 
 ---
 
-## 🚀 Instalação e execução
+##  Instalação e execução
 
 > Pré-requisitos: [Python](https://www.python.org/downloads/) instalado (marque **Add Python to PATH** na instalação) e [Git](https://git-scm.com/downloads).
 
@@ -160,7 +160,7 @@ PALAVRA_DE_ATIVACAO=sexta-feira
 
 ---
 
-## 🔒 Segurança e privacidade
+##  Segurança e privacidade
 
 - **Chaves de API** ficam só no `.env`, nunca dentro do código.
 - **Ações no computador** (repouso, desligar, apagar arquivos) sempre pedem confirmação antes de executar.
@@ -169,7 +169,7 @@ PALAVRA_DE_ATIVACAO=sexta-feira
 
 ---
 
-## 🩺 Solução de problemas
+##  Solução de problemas
 
 | Problema | O que fazer |
 |---|---|
@@ -180,7 +180,7 @@ PALAVRA_DE_ATIVACAO=sexta-feira
 
 ---
 
-## 🗺️ Roadmap
+##  Roadmap
 
 **Fase 1: funções principais**
 - [x] Repositório e estrutura inicial (`backend/`)
@@ -205,22 +205,22 @@ PALAVRA_DE_ATIVACAO=sexta-feira
 
 ---
 
-## 🤝 Contribuições
+##  Contribuições
 
 Sugestões e melhorias são bem-vindas. Abra uma *issue* para conversar sobre mudanças maiores ou envie um *pull request* com uma descrição clara do que mudou.
 
 ---
 
-## 📜 Licença
+##  Licença
 
 Distribuído sob a licença MIT.
 
 ---
 
-## 📬 Autor
+##  Autor
 
 **Matheus**, estudante de Inteligência Artificial.
 
-🐙 GitHub: [github.com/matheussaf](https://github.com/matheussaf)
+ GitHub: [github.com/matheussaf](https://github.com/matheussaf)
 
 > 🚨 **Aviso:** projeto com fins educacionais. Respeite os termos de uso das APIs utilizadas.
