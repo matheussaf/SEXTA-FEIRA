@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/logo.png" alt="SEXTA-FEIRA — assistente virtual com IA" width="640">
+<img src="logo.png" alt="SEXTA-FEIRA — assistente virtual com IA" width="640">
 
 # SEXTA-FEIRA
 
