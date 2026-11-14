@@ -52,15 +52,15 @@ Depois das funções principais, o projeto ganha uma interface animada (HTML, CS
 
 ```mermaid
 flowchart LR
-    A[🎙️ Você fala] --> B[Escuta com palavra de ativação]
+    A[ Você fala] --> B[Escuta com palavra de ativação]
     B --> C[Fala vira texto]
-    C --> D{🧠 Cérebro de IA}
+    C --> D{ Cérebro de IA}
     D -->|dúvida, conta ou código| E[Resposta]
-    D -->|pesquisa| F[🌐 Busca na web]
-    D -->|ação no computador| G[🖥️ Ferramentas do sistema]
+    D -->|pesquisa| F[ Busca na web]
+    D -->|ação no computador| G[ Ferramentas do sistema]
     F --> E
     G -->|pede confirmação| E
-    E --> H[🔊 Texto vira voz]
+    E --> H[ Texto vira voz]
 ```
 
 1. **Escuta:** a SEXTA-FEIRA fica em modo espera até ouvir a palavra de ativação.
