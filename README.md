@@ -4,11 +4,13 @@
 
 # SEXTA-FEIRA
 
-**Assistente virtual inteligente em Python, com voz, automações no PC e IA.**
+**Assistente virtual inteligente em Python, FastAPI e IA.**
 
-Pergunte qualquer coisa, peça uma pesquisa e continue trabalhando: ela avisa falando quando terminar.
+Pergunte qualquer coisa, consulte o clima em tempo real e continue trabalhando com uma IA rápida e direta.
 
 ![Python](https://img.shields.io/badge/Python-backend-F58220?style=for-the-badge&logo=python&logoColor=white&labelColor=111111)
+![FastAPI](https://img.shields.io/badge/FastAPI-framework-009688?style=for-the-badge&logo=fastapi&logoColor=white&labelColor=111111)
+![Groq](https://img.shields.io/badge/Groq-API-f55036?style=for-the-badge&logo=groq&logoColor=white&labelColor=111111)
 ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-F58220?style=for-the-badge&labelColor=111111)
 ![Licença](https://img.shields.io/badge/licen%C3%A7a-MIT-F58220?style=for-the-badge&labelColor=111111)
 
@@ -18,209 +20,157 @@ Pergunte qualquer coisa, peça uma pesquisa e continue trabalhando: ela avisa fa
 
 ---
 
-##  Sobre
+## 💡 Sobre
 
-A **SEXTA-FEIRA** é uma assistente virtual com identidade própria, feita do zero em português do Brasil. A ideia é reunir em um só lugar o que normalmente exige vários apps:
+A **SEXTA-FEIRA** é uma assistente virtual com identidade própria, feita do zero em português do Brasil. A ideia é reunir em um só lugar ferramentas úteis para o dia a dia:
 
 - tirar dúvidas sobre qualquer assunto, de contas e código a perguntas aleatórias;
-- pesquisar na internet e resumir o resultado;
-- conversar por **voz**, falando e ouvindo;
-- controlar o computador (colocar em repouso, abrir programas etc.), sempre com confirmação nas ações sensíveis;
+- consultar o clima em tempo real (com integração local para Santos, SP);
+- conversar com alta velocidade usando o motor de IA do Groq;
 - trabalhar em **segundo plano** enquanto você faz outra coisa.
 
-Depois das funções principais, o projeto ganha uma interface animada (HTML, CSS e JavaScript) e será empacotado como aplicativo para **PC** e **celular**.
+Depois das funções principais de API, o projeto ganha uma interface web e suporte progressivo para mobile.
 
->  **Projeto em desenvolvimento ativo.** Os itens da seção [Funcionalidades](#-funcionalidades) e do [Roadmap](#-roadmap) mostram o que já existe e o que ainda está planejado.
+> 🛠️ **Projeto em desenvolvimento ativo.** Os itens da seção [Funcionalidades](#-funcionalidades) e do [Roadmap](#-roadmap) mostram o que já existe e o que ainda está planejado.
 
 ---
 
-##  Funcionalidades
+## 🚀 Funcionalidades
 
 | | Funcionalidade | O que faz | Status |
 |---|---|---|---|
-| 🧠 | **Conversa e dúvidas** | Responde perguntas gerais, resolve contas e ajuda com código |  Planejado |
-| 🌐 | **Pesquisa na web** | Busca informações atuais e entrega um resumo |  Planejado |
-| 🎙️ | **Voz** | Fala as respostas e ouve você, com a palavra de ativação "Sexta-Feira" |  Planejado |
-| 🖥️ | **Controle do PC** | Repouso, bloqueio de tela, abrir programas, volume |  Planejado |
-| ⏳ | **Tarefas em segundo plano** | Pesquisa enquanto você trabalha e avisa por voz quando terminar |  Planejado |
-| 🎨 | **Interface animada** | Visual próprio com animações em CSS e JavaScript |  Planejado |
-| 📱 | **App para PC e celular** | Versão instalável nos dois dispositivos |  Planejado |
+| 🧠 | **Conversa e dúvidas** | Responde perguntas gerais e ajuda com código via Groq | ✅ Em uso |
+| 🌤️ | **Clima em tempo real** | Consulta temperatura e ventos atuais (ex: Santos, SP) via Open-Meteo | ✅ Em uso |
+| 🌐 | **Pesquisa na web** | Busca informações atuais e entrega um resumo | 🔜 Planejado |
+| 🎙️ | **Voz** | Fala as respostas e ouve você, com palavra de ativação | 🔜 Planejado |
+| 🖥️ | **Controle do PC** | Repouso, bloqueio de tela, abrir programas, volume | 🔜 Planejado |
+| 📱 | **Interface & App** | Versão web interativa e PWA para dispositivos | 🔜 Planejado |
 
 ---
 
-##  Como funciona
+## 🔄 Como funciona
 
 ```mermaid
 flowchart LR
-    A[ Você fala] --> B[Escuta com palavra de ativação]
-    B --> C[Fala vira texto]
-    C --> D{ Cérebro de IA}
-    D -->|dúvida, conta ou código| E[Resposta]
-    D -->|pesquisa| F[ Busca na web]
-    D -->|ação no computador| G[ Ferramentas do sistema]
-    F --> E
-    G -->|pede confirmação| E
-    E --> H[ Texto vira voz]
+    A[ Requisição HTTP] --> B[FastAPI Backend]
+    B --> C{Tipo de Comando}
+    C -->|Clima/Tempo| D[API Open-Meteo]
+    C -->|Dúvida ou Código| E[Cérebro Groq AI]
+    D --> F[Resposta Formatada]
+    E --> F
+    F --> G[Cliente / Docs Swagger]
+
 ```
 
-1. **Escuta:** a SEXTA-FEIRA fica em modo espera até ouvir a palavra de ativação.
-2. **Entendimento:** a fala vira texto e o cérebro de IA decide o que fazer.
-3. **Ação:** responde direto, pesquisa na web ou usa uma ferramenta do sistema.
-4. **Resposta:** o resultado é falado em voz alta e mostrado na tela.
-5. **Segundo plano:** tarefas longas rodam em paralelo e a assistente avisa quando terminarem.
+1. **Requisição:** o usuário envia um comando via API (`/chat`).
+2. **Identificação:** o FastAPI processa se é uma consulta de clima local ou uma pergunta para a IA.
+3. **Processamento:** a inteligência do Groq ou a API de clima respondem dinamicamente.
+4. **Retorno:** a SEXTA-FEIRA entrega a resposta estruturada em JSON para a interface ou testes.
 
 ---
 
-##  Estrutura do projeto
+## 📁 Estrutura do projeto
 
 ```
 SEXTA-FEIRA/
 ├── assets/
-│   └── logo.png          # Logo do projeto
-├── backend/              # Cérebro da assistente (Python)
-├── frontend/             # Interface animada (planejado)
-├── .env.example          # Modelo das variáveis de ambiente, sem segredos (planejado)
-├── .gitignore            # Arquivos que nunca vão para o GitHub
-├── requirements.txt      # Dependências Python (planejado)
-└── README.md             # Esta documentação
+│   └── logo.png            # Logo do projeto
+├── backend/                
+│   ├── main.py             # Servidor principal (FastAPI + Groq + Open-Meteo)
+│   └── requirements.txt    # Dependências Python
+├── frontend/               # Interface web (planejado)
+├── .env                    # Variáveis de ambiente e chaves secretas (ignorado pelo Git)
+├── .gitignore              # Arquivos protegidos
+└── README.md               # Esta documentação
+
 ```
 
 ---
 
-##  Tecnologias
+## 🛠️ Tecnologias
 
 | Tecnologia | Função | Status |
-|---|---|---|
+| --- | --- | --- |
 | **Python** | Linguagem principal do backend | ✅ Em uso |
-| **API de IA (LLM)** | Cérebro da assistente | 🔜 A definir |
-| **Reconhecimento de voz** | Transformar fala em texto | 🔜 A definir |
-| **Síntese de voz** | Transformar texto em fala | 🔜 A definir |
-| **HTML, CSS e JavaScript** | Interface e animações | 🔜 Planejado |
+| **FastAPI** | Framework web de alta performance | ✅ Em uso |
+| **Uvicorn** | Servidor ASGI para rodar a API | ✅ Em uso |
+| **Groq API** | Cérebro de IA ultrarrápido | ✅ Em uso |
+| **Open-Meteo** | Dados de clima em tempo real | ✅ Em uso |
 | **Git e GitHub** | Versionamento e portfólio | ✅ Em uso |
 
 ---
 
-##  Instalação e execução
+## ⚙️ Instalação e execução
 
-> Pré-requisitos: [Python](https://www.python.org/downloads/) instalado (marque **Add Python to PATH** na instalação) e [Git](https://git-scm.com/downloads).
+> Pré-requisitos: [Python](https://www.python.org/downloads/) instalado e [Git](https://git-scm.com/downloads).
 
 **1. Clone o repositório**
 
 ```bash
-git clone https://github.com/matheussaf/SEXTA-FEIRA.git
+git clone [https://github.com/matheussaf/SEXTA-FEIRA.git](https://github.com/matheussaf/SEXTA-FEIRA.git)
 cd SEXTA-FEIRA
+
 ```
 
-**2. Crie e ative o ambiente virtual**
+**2. Instale as dependências**
 
 ```powershell
-# Windows (PowerShell)
-python -m venv venv
-.\venv\Scripts\Activate.ps1
+pip install fastapi uvicorn requests python-dotenv groq --system
+# Ou utilizando o uv:
+uv pip install fastapi uvicorn requests python-dotenv groq --system
+
 ```
 
-```bash
-# Linux / macOS
-python3 -m venv venv
-source venv/bin/activate
-```
+**3. Configure suas chaves no arquivo `.env**`
 
-**3. Instale as dependências**
-
-```bash
-pip install -r requirements.txt
-```
-
-**4. Configure suas chaves**
-
-Copie o modelo e preencha com as suas chaves:
-
-```powershell
-copy .env.example .env
-```
-
-**5. Execute**
-
-```bash
-cd backend
-python main.py
-```
-
----
-
-## ⚙️ Configuração
-
-As chaves e preferências ficam no arquivo `.env`, que **nunca** é enviado ao GitHub.
+Na raiz do projeto, crie um arquivo `.env` com a sua chave do Groq:
 
 ```env
-IA_API_KEY=sua_chave_aqui
-NOME_DA_ASSISTENTE=Sexta-Feira
-PALAVRA_DE_ATIVACAO=sexta-feira
+GROQ_API_KEY="sua_chave_gsk_aqui"
+
 ```
 
----
+**4. Execute o servidor**
 
-##  Segurança e privacidade
+```powershell
+cd backend
+uvicorn main:app --reload
 
-- **Chaves de API** ficam só no `.env`, nunca dentro do código.
-- **Ações no computador** (repouso, desligar, apagar arquivos) sempre pedem confirmação antes de executar.
-- **Lista de comandos permitidos:** a assistente só executa o que estiver autorizado.
-- **Registro (log)** das ações executadas, para você conferir depois.
+```
 
----
-
-##  Solução de problemas
-
-| Problema | O que fazer |
-|---|---|
-| `A execução de scripts foi desabilitada` ao ativar o venv | No PowerShell, rode `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned` e tente ativar de novo |
-| Microfone não é detectado | Windows: **Configurações → Privacidade e segurança → Microfone** e permita o acesso para aplicativos de desktop |
-| Erro de chave de API inválida | Confira o `.env`: sem espaços extras nem aspas em volta da chave, e reinicie o programa |
-| A assistente não fala | Verifique o dispositivo de saída de áudio e o volume do sistema |
+Acesse a documentação interativa em: `http://127.0.0.1:8000/docs`
 
 ---
 
-##  Roadmap
+## 🔒 Segurança e privacidade
 
-**Fase 1: funções principais**
-- [x] Repositório e estrutura inicial (`backend/`)
-- [ ] Conversa com IA (dúvidas, contas e código)
-- [ ] Pesquisa na web
-- [ ] Voz: falar e ouvir, com palavra de ativação
-- [ ] Controle do PC com confirmação (repouso, bloqueio, abrir programas)
-- [ ] Tarefas em segundo plano com aviso por voz
-
-**Fase 2: design e animações**
-- [ ] Interface em HTML, CSS e JavaScript
-- [ ] Animações que mudam conforme ela ouve, pensa e fala
-
-**Fase 3: aplicativo**
-- [ ] Versão instalável para PC
-- [ ] Versão para celular
-
-**Ideias futuras**
-- [ ] Memória de preferências e anotações
-- [ ] Lembretes e timers
-- [ ] Modo silencioso
+* **Chaves de API** ficam estritamente no arquivo `.env`, protegido pelo `.gitignore` contra vazamentos no GitHub.
+* **Isolamento de credenciais:** nenhuma chave fica hardcoded no código-fonte.
 
 ---
 
-##  Contribuições
+## 🎯 Roadmap
 
-Sugestões e melhorias são bem-vindas. Abra uma *issue* para conversar sobre mudanças maiores ou envie um *pull request* com uma descrição clara do que mudou.
+**Fase 1: Backend & IA (Em andamento)**
+
+* [x] Repositório e estrutura inicial (`backend/`)
+* [x] Servidor FastAPI configurado com rotas de chat
+* [x] Integração com IA via Groq e descoberta dinâmica de modelo
+* [x] Rota de clima em tempo real para Santos (Open-Meteo)
+* [ ] Módulo de voz (falar e ouvir)
+* [ ] Ferramentas de automação e controle local do PC
+
+**Fase 2: Interface & Frontend**
+
+* [ ] Painel web interativo (HTML, CSS e JavaScript)
+* [ ] PWA configurado para uso no celular (iOS / Android)
 
 ---
 
-##  Licença
+## 📝 Autor
 
-Distribuído sob a licença MIT.
+**Matheus Ferreira**, estudante de Tecnologia em Inteligência Artificial (Unisanta).
 
----
+GitHub: [github.com/matheussaf](https://github.com/matheussaf)
 
-##  Autor
-
-**Matheus**, estudante de Inteligência Artificial.
-
- GitHub: [github.com/matheussaf](https://github.com/matheussaf)
-
-> 🚨 **Aviso:** projeto com fins educacionais. Respeite os termos de uso das APIs utilizadas.
+```
